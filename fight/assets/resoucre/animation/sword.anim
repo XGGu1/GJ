@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "sword",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.4,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "c661e038-75a0-46a2-ae2e-20a2e159242d"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "7bf587da-60cd-4e14-a190-b07359828f27"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "28e89418-bd58-4fe0-ba5b-a2cdff526af2"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "755e2e97-6dd0-486e-92b7-ee517d33b836"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
