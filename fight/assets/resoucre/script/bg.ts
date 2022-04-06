@@ -17,6 +17,8 @@ export default class bg extends cc.Component {
     click(event?) {
         if (event.name == "abc") {
             console.log("aaa");
+            console.log(1);
+
         }
     }
 }
