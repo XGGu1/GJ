@@ -17,6 +17,8 @@ export default class player extends cc.Component {
     fall() {
         if (Uinfo.player_state == "fall") {
             this.player_animation.play("fall");
+            console.log("第四次提交");
+
         }
     }
     landing() {
