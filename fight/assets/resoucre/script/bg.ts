@@ -18,6 +18,7 @@ export default class bg extends cc.Component {
         if (event.name == "abc") {
             console.log("aaa");
             console.log(1);
+            console.log(1);
 
         }
     }
