@@ -6,7 +6,8 @@
     "player_hit",
     "player_hurt",
     "enemy_hit",
-    "enemy_hurt"
+    "enemy_hurt",
+    "pass"
   ],
   "collision-matrix": [
     [
@@ -20,7 +21,11 @@
       false,
       false,
       false,
-      false
+      false,
+      null,
+      null,
+      null,
+      true
     ],
     [
       false,
@@ -52,6 +57,16 @@
       false,
       false,
       true,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      false,
+      false,
       false,
       false,
       false

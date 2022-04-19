@@ -14,14 +14,16 @@ export default class player extends cc.Component {
     jumpNum: number = 0;//跳跃次数
     player_audio: cc.AudioSource
 
+
+
     fall() {
         if (Uinfo.player_state == "fall") {
             this.player_animation.play("fall");
-            console.log("第四次提交");
 
         }
     }
     landing() {
+        //着陆状态
         if (Uinfo.player_state == "landing") {
             this.jumpSpeed = 50;
             this.player_animation.play("landing");
@@ -35,6 +37,7 @@ export default class player extends cc.Component {
         }
     }
     jump() {
+        //跳跃状态
         if (Uinfo.player_state == 'jump') {
             this.node.y += this.jumpSpeed;
             this.jumpSpeed -= 5;
@@ -45,6 +48,7 @@ export default class player extends cc.Component {
                 this.fall();
             }
         }
+        //降落状态
         if (Uinfo.player_state == "fall") {
             this.node.y -= this.fallSpeed;
             if (this.node.y < -155) {
@@ -53,31 +57,38 @@ export default class player extends cc.Component {
                 this.landing();
             }
         }
+    }
 
-    }
-    onLoad() {
-        this.player_animation = this.node.getComponent(cc.Animation);
-    }
     finish() {
         this.isFinish = false;
         this.player_animation.play("stand");
     }
+
     isNormal() {
-        if ((Uinfo.player_state == "normal" && Uinfo.player_dir == "right") || (Uinfo.player_state == "normal" && Uinfo.player_dir == "left"))
+        if ((Uinfo.player_state == "normal" && Uinfo.player_dir == "right") || (Uinfo.player_state == "normal" && Uinfo.player_dir == "left")) {
             this.node.getComponent(cc.Animation).play("run");
+        }
     }
+
+
+    onLoad() {
+        this.player_animation = this.node.getComponent(cc.Animation);
+    }
+
     update(dt) {
         if (Uinfo.player_dir == 'left') {
             this.node.scaleX = -Math.abs(this.node.scaleX)
-            this.node.x -= 5
+            this.node.x -= 5;
             // this.player_animation.play('run')
         } else if (Uinfo.player_dir == 'right') {
             this.node.scaleX = Math.abs(this.node.scaleX)
-            this.node.x += 5
+            this.node.x += 5;
             // this.player_animation.play('run');
         }
         this.jump();
-
+        if (this.node.x <= -460) {
+            this.node.x = -460;
+        }
 
     }
 }

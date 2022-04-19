@@ -21,6 +21,9 @@ export default class ui extends cc.Component {
     @property(cc.Node)
     player: cc.Node = null;
 
+    @property(cc.Node)
+    player_follower: cc.Node = null;
+
 
     player_script: player;
     player_move() {
@@ -47,6 +50,7 @@ export default class ui extends cc.Component {
             this.player.getComponent(cc.Animation).play("stand")
             Uinfo.player_dir = "noMove";
         })
+
 
         // 左移
         this.btn_left.on(cc.Node.EventType.TOUCH_START, () => {
@@ -75,10 +79,12 @@ export default class ui extends cc.Component {
     }
 
     player_attack() {
+        //攻击
         this.btn_attack.on(cc.Node.EventType.TOUCH_START, () => {
             if (Uinfo.player_state == "fall" || Uinfo.player_state == "jump" || Uinfo.player_state == "landing") {
                 return
             }
+            //攻击完成后才可再次攻击
             if (this.player.getComponent(player).isFinish == false) {
                 this.player.getComponent(cc.Animation).play("attack")
                 this.player.getComponent(cc.AudioSource).play();
@@ -96,8 +102,6 @@ export default class ui extends cc.Component {
                 Uinfo.player_state = "jump"
                 this.player_script.jumpNum++;
             }
-
-
             // this.player.getComponent(player).jumpSpeed += 50;
             // Uinfo.player_state = "jump"
         })
@@ -114,7 +118,7 @@ export default class ui extends cc.Component {
     }
 
     update(dt) {
-        this.node.x = this.player.x - 480;
+        this.node.x = this.player_follower.x - 480;
 
     }
 }

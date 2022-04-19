@@ -1,4 +1,5 @@
 import enemy from "./enemy";
+import { Uinfo } from "./Uinfo";
 
 const { ccclass, property } = cc._decorator;
 
@@ -10,16 +11,18 @@ export default class enemy_hurt extends cc.Component {
         manager.enabled = true;
         this.enemy_script = this.enemy.getComponent(enemy);
     }
-
+    @property
     enemy_blood: number = 3;
+
     @property(cc.Node)
     enemy: cc.Node = null;
 
     enemy_script: enemy;
+
     enemy_die() {
 
         this.enemy.getComponent(cc.Animation).play("enemy_die");
-        this.enemy_blood = 4;
+        this.enemy_blood = 1;
         //队列  动作队列
         cc.tween(this.enemy)
             .to(0.5, { position: cc.v3(this.enemy.x + 80, this.enemy.y) })
@@ -37,13 +40,12 @@ export default class enemy_hurt extends cc.Component {
 
     }
 
-    //发生碰撞时候的回调
     onCollisionEnter() {
         this.node.getComponent(cc.AudioSource).play();
         this.enemy_blood -= 1;
 
     }
-    //碰撞结束时候的回调
+
     onCollisionExit() {
 
     }
@@ -51,11 +53,10 @@ export default class enemy_hurt extends cc.Component {
     update(dt) {
         if (this.enemy_blood <= 0) {
             this.enemy_script.enemy_state = "die";
+            // this.enemy_die();
             if (this.enemy_script.enemy_state == "die") {
                 this.enemy_die();
             }
-        } else {
-            console.log(2);
         }
     }
 }
