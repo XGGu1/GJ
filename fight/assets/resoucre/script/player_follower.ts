@@ -5,7 +5,7 @@ const { ccclass, property } = cc._decorator;
 export default class player_follower extends cc.Component {
 
     @property(cc.Node)
-    player: Node = null;
+    player: cc.Node = null;
 
     @property
     sceneWidth: number = 3000;

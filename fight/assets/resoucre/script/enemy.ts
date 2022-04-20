@@ -25,8 +25,8 @@ export default class enemy extends cc.Component {
     //初始化
     onInit(): void {
         this.randomNumber = Math.random() * 100;
-        this.max_distance = 1400 + this.randomNumber;
-        this.min_distance = 500 + this.randomNumber;
+        this.max_distance = this.node.x + 300 + this.randomNumber;
+        this.min_distance = this.node.x - 300 + this.randomNumber;
         let random = Math.ceil(Math.random() * 2);
         this.enemy_animation = this.node.getComponent(cc.Animation);
 
